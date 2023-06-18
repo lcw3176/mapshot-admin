@@ -44,18 +44,15 @@ export default {
       appTitle: "MAPSHOT ADMIN",
       sidebar: false,
       desktop: [
-        { title: "사용법", path: "/manual" },
         { title: "공지사항", path: "/notice" },
-        { title: "문의", path: "/contact" },
+        { title: "유저 문의", path: "/contact" },
       ],
 
 
       mobile: [
         { title: "홈", path: "/", icon: "mdi-home-outline" },
-        { title: "사용법", path: "/manual", icon: "mdi-school-outline" },
-        { title: "공지사항", path: "/notice", icon: "mdi-bullhorn-outline" },
-        { title: "문의", path: "/contact", icon: "mdi-tooltip-question-outline" },
-        
+        { title: "공지사항", path: "/manual", icon: "mdi-bullhorn-outline" },
+        { title: "유저 문의", path: "/notice", icon: "mdi-tooltip-question-outline" }
       ],
       display
     };
