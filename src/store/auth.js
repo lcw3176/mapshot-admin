@@ -1,14 +1,19 @@
 import { defineStore } from "pinia";
 import axios from 'axios';
+import router from "@/router";
 
-async function requestLogin(queryString) {
+async function requestLogin(nickname, password) {
   try{
-    const response = await axios.get('http://localhost:8080/' + queryString);
+    const response = await axios.post('http://localhost:8080/admin/login', {
+      nickname: nickname,
+      password: password
+    });
 
-    return response.data;
+    return response;
+
   } catch(error){
 
-    return [];
+    return '';
   }
   
 }
@@ -16,10 +21,12 @@ async function requestLogin(queryString) {
 
 export const useAuthStore = defineStore("auth", {
 
-  state: () => ({
-   
-  }),
 
+  state: () => ({
+    nickname: '',
+    password: '',
+    token: '',
+  }),
 
   getters: {
 
@@ -27,7 +34,13 @@ export const useAuthStore = defineStore("auth", {
 
   actions: {
     async login() {
+      let data = await requestLogin(this.nickname, this.password);
 
+      if(data.headers.admin_auth_token !== '' && data.headers.admin_auth_token !== undefined){
+        this.token = data.headers.admin_auth_token;
+        router.push('/home');
+      }
+      
     },
   }
 });

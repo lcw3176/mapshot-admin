@@ -5,11 +5,12 @@
                 <v-form ref="form" @submit.prevent="login">
                     <input type="hidden" name="contact_number">
 
-                    <v-text-field label="id" variant="underlined" name="nickname" v-model="nickname">
+                    <v-text-field label="id" variant="underlined" name="nickname" v-model="authStore.nickname">
                     </v-text-field>
 
 
-                    <v-text-field label="password" variant="underlined" name="password" v-model="password" type="Password">
+                    <v-text-field label="password" variant="underlined" name="password" v-model="authStore.password"
+                        type="Password">
                     </v-text-field>
 
                     <v-btn type="submit" color="success">로그인</v-btn>
@@ -33,7 +34,7 @@ export default {
 
     },
 
-    setup(){
+    setup() {
         const authStore = useAuthStore();
 
         return {
@@ -42,17 +43,10 @@ export default {
 
     },
 
-    data() {
-        return {
-            nickname: '',
-            password: '',
-        }
-    },
-
 
     methods: {
         login() {
-            alert("로그인");
+            this.authStore.login();
         },
     }
 
