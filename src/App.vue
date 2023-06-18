@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <v-app-bar elevation="1" v-if="display.mdAndUp">
+    <v-app-bar elevation="1" v-if="display.mdAndUp && authStore.token !== ''">
       <v-btn class="font-weight-black font-weight-bold text-h5" to="/">
         {{ appTitle }}
 
@@ -14,7 +14,7 @@
 
     </v-app-bar>
 
-    <v-bottom-navigation v-else grow>
+    <v-bottom-navigation v-if="!display.mdAndUp && authStore.token !== ''" grow>
       <v-btn v-for="item in mobile" :key="item.title" color="teal" :to="item.path">
         <v-icon>{{ item.icon }}</v-icon>
         {{ item.title }}
@@ -33,9 +33,18 @@
 
 import { useDisplay } from 'vuetify'
 import { ref } from 'vue'
+import { useAuthStore } from '@/store/auth.js'
 
 
 export default {
+
+  setup() {
+    const authStore = useAuthStore();
+
+    return {
+      authStore,
+    }
+  },
 
   data() {
     const display = ref(useDisplay())
