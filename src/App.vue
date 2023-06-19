@@ -1,25 +1,40 @@
 <template>
   <v-layout>
-    <v-app-bar elevation="1" v-if="display.mdAndUp && authStore.token !== ''">
-      <v-btn class="font-weight-black font-weight-bold text-h5" to="/">
-        {{ appTitle }}
+    <v-navigation-drawer class="bg-deep-purple" theme="dark" permanent v-if="display.mdAndUp && authStore.token !== ''">
 
-      </v-btn>
 
-      <v-btn v-for="item in desktop" :key="item.title" size="large" variant="plain" :to="item.path">
+      <v-list v-model:opened="open">
+        <v-list-subheader>MAPSHOT-ADMIN</v-list-subheader>
+        <v-list-item title="홈" to="/home"></v-list-item>
 
-        {{ item.title }}
+        <v-list-group value="공지사항">
+          <template v-slot:activator="{ props }">
+            <v-list-item v-bind="props" title="공지사항"></v-list-item>
+          </template>
 
-      </v-btn>
+          <v-list-item v-for="item in notice" :key="item.title" :value="item.title" :title="item.title" :to="item.to"></v-list-item>
+        </v-list-group>
 
-    </v-app-bar>
 
-    <v-bottom-navigation v-if="!display.mdAndUp && authStore.token !== ''" grow>
-      <v-btn v-for="item in mobile" :key="item.title" color="teal" :to="item.path">
-        <v-icon>{{ item.icon }}</v-icon>
-        {{ item.title }}
-      </v-btn>
-    </v-bottom-navigation>
+        <v-list-group value="문의">
+          <template v-slot:activator="{ props }">
+            <v-list-item v-bind="props" title="문의"></v-list-item>
+          </template>
+
+          <v-list-item v-for="item in contact" :key="item.title" :value="item.title" :title="item.title" :to="item.to"></v-list-item>
+        </v-list-group>
+
+      </v-list>
+      <template v-slot:append>
+        <div class="pa-2">
+          <v-btn block>
+            로그인 연장
+          </v-btn>
+        </div>
+      </template>
+
+
+    </v-navigation-drawer>
 
 
     <v-main>
@@ -52,18 +67,20 @@ export default {
     return {
       appTitle: "MAPSHOT ADMIN",
       sidebar: false,
-      desktop: [
-        { title: "공지사항", path: "/notice" },
-        { title: "유저 문의", path: "/contact" },
+      display,
+      notice: [
+        {title: "등록", to: "/notice/create"},
+        {title: "수정", to: "/notice/modify"},
+        {title: "삭제", to: "/notice/delete"},
       ],
 
-
-      mobile: [
-        { title: "홈", path: "/", icon: "mdi-home-outline" },
-        { title: "공지사항", path: "/manual", icon: "mdi-bullhorn-outline" },
-        { title: "유저 문의", path: "/notice", icon: "mdi-tooltip-question-outline" }
+      contact: [
+        {title: "목록", to: "/contact/all"},
+        {title: "미완료", to: "/contact/incomplete"},
+        {title: "완료", to: "/contact/complete"},
       ],
-      display
+
+      open: [],
     };
   },
 }
