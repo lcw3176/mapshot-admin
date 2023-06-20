@@ -19,6 +19,19 @@ const routes = [
     name: 'noticeCreate',
     component: () => import(/* webpackChunkName: "noticeCreate" */ '../views/NoticeCreateView.vue')
   },
+
+  {
+    path: '/notice/modify',
+    name: 'noticeModifyList',
+    component: () => import(/* webpackChunkName: "noticeModifyList" */ '../views/NoticeModifyListView.vue')
+  },
+
+  {
+    path: '/notice/modify/:noticeNumber',
+    name: 'noticeModify',
+    component: () => import(/* webpackChunkName: "noticeModify" */ '../views/NoticeModifyView.vue'),
+    props: true
+  }
 ]
 
 const router = createRouter({

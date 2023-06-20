@@ -6,7 +6,7 @@
                 <v-text-field v-model="title" variant="underlined" label="제목" required></v-text-field>
 
                 <v-select v-model="select" :items="items" variant="underlined" label="카테고리" required></v-select>
-                
+
                 <v-textarea v-model="content" variant="outlined" label="내용" rows="15" required></v-textarea>
 
                 <v-btn class="me-4" color="success">
@@ -20,7 +20,7 @@
 
 <script>
 
-import { useAuthStore } from '@/store/auth.js'
+import { useNoticeStore } from '@/store/notice.js'
 
 export default {
 
@@ -29,10 +29,10 @@ export default {
     },
 
     setup() {
-        const authStore = useAuthStore();
-
+        const noticeStore = useNoticeStore();
+        
         return {
-            authStore,
+            noticeStore,
         }
 
     },
@@ -46,7 +46,7 @@ export default {
             '점검예정',
             '업데이트',
         ],
-    }),  
+    }),
 
 
     methods: {
