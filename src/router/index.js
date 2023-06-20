@@ -13,6 +13,12 @@ const routes = [
     name: 'home',
     component: () => import(/* webpackChunkName: "home" */ '../views/HomeView.vue')
   },
+
+  {
+    path: '/notice/create',
+    name: 'noticeCreate',
+    component: () => import(/* webpackChunkName: "noticeCreate" */ '../views/NoticeCreateView.vue')
+  },
 ]
 
 const router = createRouter({
