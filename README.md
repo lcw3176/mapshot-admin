@@ -34,10 +34,10 @@
 
 ### 공지사항
 #### 등록
-![등록](https://github.com/lcw3176/mapshot-admin/assets/59993347/9509bd4b-70c0-4fd3-8b6b-d29f7787eaa8)
+![등록](https://github.com/lcw3176/mapshot-admin/assets/59993347/0e71ab58-f3ee-4416-b478-1553e8d522e4)
 
 #### 수정
-![수정](https://github.com/lcw3176/mapshot-admin/assets/59993347/2385bee6-ebf4-4fd1-9f43-a5eeaa2092a9)
+![수정](https://github.com/lcw3176/mapshot-admin/assets/59993347/7c0386cb-0993-41a1-bde1-a89db6920836)
 
 #### 삭제
 ![삭제](https://github.com/lcw3176/mapshot-admin/assets/59993347/89cc2537-74ba-4a1c-8ab0-d88a98aa22fa)
