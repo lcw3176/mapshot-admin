@@ -31,7 +31,14 @@ const routes = [
     name: 'noticeModify',
     component: () => import(/* webpackChunkName: "noticeModify" */ '../views/NoticeModifyView.vue'),
     props: true
-  }
+  },
+
+  {
+    path: '/notice/delete',
+    name: 'noticeDelete',
+    component: () => import(/* webpackChunkName: "noticeDelete" */ '../views/NoticeDeleteView.vue')
+  },
+
 ]
 
 const router = createRouter({

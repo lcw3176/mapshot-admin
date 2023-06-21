@@ -33,45 +33,47 @@ async function requestDetail(noticeNumber) {
 }
 
 
-async function requestRegister(title, content, noticeType) {
+async function requestRegister(notice) {
     try {
         const response = await axios.post('http://localhost:8080/notice/register', {
-            title: title,
-            content: content,
-            noticeType: noticeType
+            title: notice.title,
+            content: notice.content,
+            noticeType: notice.noticeType
         }, {
             headers: {
                 admin_auth_token: token
             }
         });
 
-        return response.data;
+        return true;
 
     } catch (error) {
 
-        return '';
+        console.error(error);
+        return false;
     }
 
 }
 
 
-async function requestModify(noticeNumber, title, content, noticeType) {
+async function requestModify(notice) {
     try {
-        const response = await axios.post('http://localhost:8080/notice/modify/' + noticeNumber, {
-            title: title,
-            content: content,
-            noticeType: noticeType
+        const response = await axios.post('http://localhost:8080/notice/modify/' + notice.id, {
+            title: notice.title,
+            content: notice.content,
+            noticeType: notice.noticeType
         }, {
             headers: {
                 admin_auth_token: token
             }
         });
 
-        return response.data;
+        return true
 
     } catch (error) {
 
-        return '';
+        console.error(error);
+        return false;
     }
 
 }
@@ -84,11 +86,11 @@ async function requestDelete(noticeNumber) {
             }
         });
 
-        return response.data;
+        return true;
 
     } catch (error) {
-
-        return '';
+        console.error(error);
+        return false;
     }
 
 }
@@ -108,6 +110,12 @@ export const useNoticeStore = defineStore("notice", {
     },
 
     actions: {
+
+        async init() {
+            this.notices = [];
+            this.lastLoadedId = 0;
+            this.notice = '';
+        },
 
         async getNoticeDetail(id) {
             this.notice = '';
@@ -139,6 +147,45 @@ export const useNoticeStore = defineStore("notice", {
 
         },
 
+
+        async register() {
+            this.changeNoticeTypeToEng(this.notice);
+            let result = await requestRegister(this.notice);
+
+            if (result) {
+                alert("등록 성공");
+            } else {
+                alert("등록 실패");
+            }
+        },
+
+
+        async modify() {
+            this.changeNoticeTypeToEng(this.notice);
+            let result = await requestModify(this.notice);
+
+            if (result) {
+                alert("수정 성공");
+            } else {
+                alert("수정 실패");
+            }
+        },
+
+        async delete(noticeNumber) {
+            if (window.confirm("정말로 삭제하시겠습니까?")) {
+                let result = await requestDelete(noticeNumber);
+
+                if (result) {
+                    alert("삭제 성공");
+                    this.init();
+                } else {
+                    alert("삭제 실패");
+                }
+            }
+
+
+        },
+
         formatDate(dateString) {
             const date = dayjs(dateString);
 
@@ -155,6 +202,20 @@ export const useNoticeStore = defineStore("notice", {
                     return 'error';
             }
         },
+
+        changeNoticeTypeToEng(notice) {
+            switch (notice.noticeType) {
+                case '업데이트':
+                    notice.noticeType = "UPDATE";
+                    break;
+                case '점검예정':
+                    notice.noticeType = "RESERVED_CHECK";
+                    break;
+                case '오류수정':
+                    notice.noticeType = "FIX";
+                    break;
+            }
+        }
 
     }
 });

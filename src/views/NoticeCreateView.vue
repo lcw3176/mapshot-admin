@@ -3,13 +3,13 @@
         <v-sheet width="1000" class="mx-auto mt-10">
 
             <v-form ref="form">
-                <v-text-field v-model="title" variant="underlined" label="제목" required></v-text-field>
+                <v-text-field v-model="noticeStore.notice.title" variant="underlined" label="제목" required></v-text-field>
 
-                <v-select v-model="select" :items="items" variant="underlined" label="카테고리" required></v-select>
+                <v-select v-model="noticeStore.notice.noticeType" :items="items" variant="underlined" label="카테고리" required></v-select>
 
-                <v-textarea v-model="content" variant="outlined" label="내용" rows="15" required></v-textarea>
+                <v-textarea v-model="noticeStore.notice.content" variant="outlined" label="내용" rows="15" required></v-textarea>
 
-                <v-btn class="me-4" color="success">
+                <v-btn class="me-4" color="success" @click="noticeStore.register()">
                     등록하기
                 </v-btn>
             </v-form>
@@ -30,7 +30,12 @@ export default {
 
     setup() {
         const noticeStore = useNoticeStore();
-        
+        noticeStore.notice = {
+            title: '',
+            content: '',
+            noticeType: '',
+        };
+
         return {
             noticeStore,
         }
@@ -38,9 +43,6 @@ export default {
     },
 
     data: () => ({
-        title: '',
-        content: '',
-        select: null,
         items: [
             '오류수정',
             '점검예정',

@@ -9,7 +9,7 @@
 
                 <v-textarea v-model="noticeStore.notice.content" variant="outlined" label="내용" rows="15" required></v-textarea>
 
-                <v-btn class="me-4" color="success">
+                <v-btn class="me-4" color="success" @click="noticeStore.modify()">
                     수정하기
                 </v-btn>
             </v-form>

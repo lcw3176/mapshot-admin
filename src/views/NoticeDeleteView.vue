@@ -32,7 +32,7 @@
                                     {{ notice.noticeType }}
                                 </v-chip>
                             </td>
-                            <td><v-list-item :to="{ path: `/notice/modify/${notice.id}` }"> {{ notice.title }}</v-list-item>
+                            <td><v-list-item @click="noticeStore.delete(notice.id)"> {{ notice.title }}</v-list-item>
                             </td>
                             <td>{{ noticeStore.formatDate(notice.createdDate) }}</td>
                         </tr>
