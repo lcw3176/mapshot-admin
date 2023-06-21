@@ -13,7 +13,7 @@
                 </div>
 
 
-                <QuillEditor v-model:content="noticeStore.notice.content" theme="bubble" readOnly="true" contentType="html" style="height: 500px;" />
+                <QuillEditor v-model:content="noticeStore.notice.content" theme="bubble" readOnly="true" contentType="html"/>
             </div>
         </v-sheet>
     </v-container>
