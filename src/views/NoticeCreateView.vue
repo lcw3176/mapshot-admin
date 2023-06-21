@@ -7,9 +7,9 @@
 
                 <v-select v-model="noticeStore.notice.noticeType" :items="items" variant="underlined" label="카테고리" required></v-select>
 
-                <v-textarea v-model="noticeStore.notice.content" variant="outlined" label="내용" rows="15" required></v-textarea>
+                <QuillEditor v-model:content="noticeStore.notice.content" theme="snow" contentType="html" style="height: 500px;" />
 
-                <v-btn class="me-4" color="success" @click="noticeStore.register()">
+                <v-btn class="me-4 mt-5" color="success" @click="noticeStore.register()">
                     등록하기
                 </v-btn>
             </v-form>
@@ -22,10 +22,13 @@
 
 import { useNoticeStore } from '@/store/notice.js'
 
+import { QuillEditor } from '@vueup/vue-quill'
+import '@vueup/vue-quill/dist/vue-quill.snow.css';
+
 export default {
 
     components: {
-
+        QuillEditor
     },
 
     setup() {

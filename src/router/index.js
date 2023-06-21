@@ -39,6 +39,20 @@ const routes = [
     component: () => import(/* webpackChunkName: "noticeDelete" */ '../views/NoticeDeleteView.vue')
   },
 
+  {
+    path: '/notice/confirm',
+    name: 'noticeConfirmList',
+    component: () => import(/* webpackChunkName: "noticeConfirmList" */ '../views/NoticeConfirmListView.vue')
+  },
+
+  
+  {
+    path: '/notice/confirm/:noticeNumber',
+    name: 'noticeConfirm',
+    component: () => import(/* webpackChunkName: "noticeConfirm" */ '../views/NoticeConfirmView.vue'),
+    props: true
+  },
+
 ]
 
 const router = createRouter({
