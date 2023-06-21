@@ -72,6 +72,7 @@ export default {
         {title: "등록", to: "/notice/create"},
         {title: "수정", to: "/notice/modify"},
         {title: "삭제", to: "/notice/delete"},
+        {title: "확인", to: "/notice/confirm"},
       ],
 
       contact: [
