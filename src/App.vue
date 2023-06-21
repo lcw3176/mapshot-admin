@@ -27,8 +27,8 @@
       </v-list>
       <template v-slot:append>
         <div class="pa-2">
-          <v-btn block>
-            로그인 연장
+          <v-btn block @click="authStore.refreshAuth()">
+            {{ getTimer() }} 로그인 연장
           </v-btn>
         </div>
       </template>
@@ -83,5 +83,18 @@ export default {
       open: [],
     };
   },
+
+
+  methods: {
+    getTimer(){
+        const hour = Math.floor(this.authStore.tokenExpirationMinute / 60) >= 10 ? 
+        Math.floor(this.authStore.tokenExpirationMinute / 60) 
+        : "0" + Math.floor(this.authStore.tokenExpirationMinute / 60)
+        const minutes = Math.floor(this.authStore.tokenExpirationMinute % 60 / 10).toString() 
+        + Math.floor(this.authStore.tokenExpirationMinute % 60 % 10).toString()
+       
+        return `${hour}:${minutes}`
+    }
+  }
 }
 </script>
