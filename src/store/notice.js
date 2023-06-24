@@ -7,7 +7,7 @@ let token = useAuthStore().token;
 
 async function requestList(noticeNumber) {
     try {
-        const response = await axios.get('http://localhost:8080/notice/list/' + noticeNumber);
+        const response = await axios.get('https://api.kmapshot.com/notice/list/' + noticeNumber);
 
         return response.data;
 
@@ -21,7 +21,7 @@ async function requestList(noticeNumber) {
 
 async function requestDetail(noticeNumber) {
     try {
-        const response = await axios.get('http://localhost:8080/notice/detail/' + noticeNumber);
+        const response = await axios.get('https://api.kmapshot.com/notice/detail/' + noticeNumber);
 
         return response.data;
 
@@ -35,7 +35,7 @@ async function requestDetail(noticeNumber) {
 
 async function requestRegister(notice) {
     try {
-        const response = await axios.post('http://localhost:8080/notice/register', {
+        const response = await axios.post('https://api.kmapshot.com/notice/register', {
             title: notice.title,
             content: notice.content,
             noticeType: notice.noticeType
@@ -58,7 +58,7 @@ async function requestRegister(notice) {
 
 async function requestModify(notice) {
     try {
-        const response = await axios.post('http://localhost:8080/notice/modify/' + notice.id, {
+        const response = await axios.post('https://api.kmapshot.com/notice/modify/' + notice.id, {
             title: notice.title,
             content: notice.content,
             noticeType: notice.noticeType
@@ -80,7 +80,7 @@ async function requestModify(notice) {
 
 async function requestDelete(noticeNumber) {
     try {
-        const response = await axios.get('http://localhost:8080/notice/delete/' + noticeNumber, {
+        const response = await axios.get('https://api.kmapshot.com/notice/delete/' + noticeNumber, {
             headers: {
                 admin_auth_token: token
             }

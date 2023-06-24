@@ -4,7 +4,7 @@ import router from "@/router";
 
 async function requestLogin(nickname, password) {
   try {
-    const response = await axios.post('http://localhost:8080/admin/login', {
+    const response = await axios.post('https://api.kmapshot.com/admin/login', {
       nickname: nickname,
       password: password
     });
@@ -20,7 +20,7 @@ async function requestLogin(nickname, password) {
 
 async function requestRefresh(token) {
   try {
-    const response = await axios.post('http://localhost:8080/admin/auth/refresh', {}, {
+    const response = await axios.post('https://api.kmapshot.com/admin/auth/refresh', {}, {
       headers: {
         admin_auth_token: token
       }
