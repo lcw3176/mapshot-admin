@@ -5,9 +5,9 @@ import dayjs from 'dayjs';
 
 let token = useAuthStore().token;
 
-async function requestList(noticeNumber) {
+async function requestList(pageNumber) {
     try {
-        const response = await axios.get('https://api.kmapshot.com/notice/list/' + noticeNumber);
+        const response = await axios.get('https://api.kmapshot.com/notice?page=' + pageNumber);
 
         return response.data;
 
@@ -21,7 +21,7 @@ async function requestList(noticeNumber) {
 
 async function requestDetail(noticeNumber) {
     try {
-        const response = await axios.get('https://api.kmapshot.com/notice/detail/' + noticeNumber);
+        const response = await axios.get('https://api.kmapshot.com/notice/' + noticeNumber);
 
         return response.data;
 
@@ -35,7 +35,7 @@ async function requestDetail(noticeNumber) {
 
 async function requestRegister(notice) {
     try {
-        const response = await axios.post('https://api.kmapshot.com/notice/register', {
+        await axios.post('https://api.kmapshot.com/admin/notice/register', {
             title: notice.title,
             content: notice.content,
             noticeType: notice.noticeType
@@ -44,7 +44,6 @@ async function requestRegister(notice) {
                 admin_auth_token: token
             }
         });
-
         return true;
 
     } catch (error) {
@@ -58,7 +57,7 @@ async function requestRegister(notice) {
 
 async function requestModify(notice) {
     try {
-        const response = await axios.post('https://api.kmapshot.com/notice/modify/' + notice.id, {
+        await axios.post('https://api.kmapshot.com/admin/notice/modify/' + notice.id, {
             title: notice.title,
             content: notice.content,
             noticeType: notice.noticeType
@@ -67,7 +66,6 @@ async function requestModify(notice) {
                 admin_auth_token: token
             }
         });
-
         return true
 
     } catch (error) {
@@ -80,12 +78,11 @@ async function requestModify(notice) {
 
 async function requestDelete(noticeNumber) {
     try {
-        const response = await axios.get('https://api.kmapshot.com/notice/delete/' + noticeNumber, {
+        await axios.get('https://api.kmapshot.com/admin/notice/delete/' + noticeNumber, {
             headers: {
                 admin_auth_token: token
             }
         });
-
         return true;
 
     } catch (error) {
@@ -141,8 +138,6 @@ export const useNoticeStore = defineStore("notice", {
                 });
 
                 $state.loaded();
-            } else {
-
             }
 
         },
