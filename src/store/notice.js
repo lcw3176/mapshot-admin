@@ -109,38 +109,27 @@ export const useNoticeStore = defineStore("notice", {
     actions: {
 
         async init() {
-            this.notices = [];
-            this.lastLoadedId = 0;
+            this.notices = '';
             this.notice = '';
         },
 
-        async getNoticeDetail(id) {
+        async loadPost(id) {
+
             this.notice = '';
-
-            let data = await requestDetail(id);
-            this.notice = data;
-        },
-
-
-        async infiniteHandler($state) {
-            if (this.lastLoadedId === 1) {
-                return;
-            }
-
-            let data = await requestList(this.lastLoadedId);
-
-
-            if (this.lastLoadedId != 1) {
-
-                data.forEach(element => {
-                    this.notices.push(element);
-                    this.lastLoadedId = element.id;
-                });
-
-                $state.loaded();
-            }
+            this.notice = await requestDetail(id);
 
         },
+
+        async loadPostList(id) {
+
+            this.notices = '';
+            let data = await requestList(id);
+
+            this.totalPage = data.totalPage;
+            this.notices = data.notices;
+
+        },
+
 
 
         async register() {

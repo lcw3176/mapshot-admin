@@ -18,9 +18,6 @@
         </v-sheet>
     </v-container>
 
-    <InfiniteLoading @infinite="noticeStore.infiniteHandler">
-
-    </InfiniteLoading>
 </template>
 
 
@@ -47,7 +44,7 @@ export default {
     },
 
     created() {
-        this.noticeStore.getNoticeDetail(this.noticeNumber);
+        this.noticeStore.loadPost(this.noticeNumber);
     },
 
 

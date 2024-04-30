@@ -1,71 +1,77 @@
 <template>
     <v-container is-fluid>
 
+      <v-row>
+        <v-col>
 
-        <v-row>
-            <v-col>
-                <v-table>
-                    <thead>
-                        <tr>
-                            <th class="text-left">
-                                No
-                            </th>
-                            <th class="text-left">
-                                카테고리
-                            </th>
+        </v-col>
 
-                            <th class="text-left">
-                                제목
-                            </th>
+        <v-col cols="8">
+          <v-table class="text-body-1">
+            <thead>
+            <tr>
+              <th class="text-left">
+                No
+              </th>
+              <th class="text-left">
+                카테고리
+              </th>
 
-                            <th class="text-left">
-                                작성일
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="notice in noticeStore.notices" :key="notice.id">
+              <th class="text-left">
+                제목
+              </th>
 
-                            <td>{{ notice.id }}</td>
-                            <td>
-                                <v-chip :color=noticeStore.getNoticeTypeClass(notice.noticeType) variant="outlined">
-                                    {{ notice.noticeType }}
-                                </v-chip>
-                            </td>
-                            <td><v-list-item :to="{ path: `/notice/confirm/${notice.id}` }"> {{ notice.title }}</v-list-item>
-                            </td>
-                            <td>{{ noticeStore.formatDate(notice.createdDate) }}</td>
-                        </tr>
-                    </tbody>
-                </v-table>
+              <th class="text-left">
+                작성일
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="notice in noticeStore.notices" :key="notice.id">
 
-            </v-col>
+              <td>{{ notice.id }}</td>
+              <td>
+                <v-chip :color=noticeStore.getNoticeTypeClass(notice.noticeType) variant="outlined">
+                  {{ notice.noticeType }}
+                </v-chip>
+              </td>
+              <td><v-list-item :to="{ path: `/notice/detail/${notice.id}` }"> {{ notice.title
+                }}</v-list-item>
+              </td>
+              <td>{{ noticeStore.formatDate(notice.createdDate) }}</td>
+            </tr>
+            </tbody>
+          </v-table>
 
-        </v-row>
+          <v-pagination v-model="noticeStore.nowPage" @click="noticeStore.loadPostList(noticeStore.nowPage)"  :length="noticeStore.totalPage"></v-pagination>
+
+        </v-col>
+
+        <v-col>
+
+        </v-col>
+      </v-row>
+
+
     </v-container>
-
-    <InfiniteLoading @infinite="noticeStore.infiniteHandler">
-
-    </InfiniteLoading>
 </template>
 
 
 <script>
 
 import { useNoticeStore } from '@/store/notice.js'
-import InfiniteLoading from 'v3-infinite-loading'
 
 export default {
 
     components: {
-        InfiniteLoading,
+
     },
 
     setup() {
         const noticeStore = useNoticeStore();
 
         noticeStore.init();
-        
+
         return {
             noticeStore,
         }
