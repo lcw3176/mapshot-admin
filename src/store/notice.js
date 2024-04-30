@@ -7,7 +7,7 @@ let token = useAuthStore().token;
 
 async function requestList(pageNumber) {
     try {
-        const response = await axios.get('https://api.kmapshot.com/notice?page=' + pageNumber);
+        const response = await axios.get('https://api.kmapshot.com/admin/notice?page=' + pageNumber);
 
         return response.data;
 
@@ -21,7 +21,7 @@ async function requestList(pageNumber) {
 
 async function requestDetail(noticeNumber) {
     try {
-        const response = await axios.get('https://api.kmapshot.com/notice/' + noticeNumber);
+        const response = await axios.get('https://api.kmapshot.com/admin/notice/' + noticeNumber);
 
         return response.data;
 

@@ -4,7 +4,7 @@ import router from "@/router";
 
 async function requestLogin(nickname, password) {
   try {
-    const response = await axios.post('https://api.kmapshot.com/admin/login', {
+    const response = await axios.post('https://api.kmapshot.com/admin/user/login', {
       nickname: nickname,
       password: password
     });
@@ -20,7 +20,7 @@ async function requestLogin(nickname, password) {
 
 async function requestRefresh(token) {
   try {
-    const response = await axios.post('https://api.kmapshot.com/admin/auth/refresh', {}, {
+    const response = await axios.post('https://api.kmapshot.com/admin/user/auth/refresh', {}, {
       headers: {
         admin_auth_token: token
       }
@@ -45,7 +45,7 @@ export const useAuthStore = defineStore("auth", {
     token: '',
     expirationTimer : '',
     tokenExpirationMinute: 0,
-    
+
   }),
 
   getters: {
@@ -59,10 +59,10 @@ export const useAuthStore = defineStore("auth", {
       this.expirationTimer = setInterval(() => {
         if (this.tokenExpirationMinute === 1) {
           this.tokenExpirationMinute = 0;
-          clearInterval(this.expirationTimer)                
+          clearInterval(this.expirationTimer)
         } else {
           this.tokenExpirationMinute--
-        }             
+        }
       }, 1000 * 60);
 
     },
