@@ -35,7 +35,7 @@
                   {{ notice.noticeType }}
                 </v-chip>
               </td>
-              <td><v-list-item :to="{ path: `/notice/detail/${notice.id}` }"> {{ notice.title
+              <td><v-list-item :to="{ path: `/notice/confirm/${notice.id}` }"> {{ notice.title
                 }}</v-list-item>
               </td>
               <td>{{ noticeStore.formatDate(notice.createdDate) }}</td>
