@@ -99,7 +99,6 @@ export const useNoticeStore = defineStore("notice", {
     state: () => ({
         notice: Object,
         notices: [],
-        lastLoadedId: 0,
     }),
 
     getters: {

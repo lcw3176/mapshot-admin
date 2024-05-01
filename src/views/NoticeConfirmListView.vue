@@ -71,7 +71,7 @@ export default {
         const noticeStore = useNoticeStore();
 
         noticeStore.init();
-
+        noticeStore.loadPostList(1);
         return {
             noticeStore,
         }
