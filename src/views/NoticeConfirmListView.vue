@@ -39,11 +39,11 @@
                 <v-list-item :to="{ path: `/notice/confirm/${notice.id}` }">
                   {{ notice.title }}
 
-                  <v-btn color="success ma-10" :to="{ path: `/notice/modify/${notice.id}` }">
+                  <v-btn color="success ml-10" :to="{ path: `/notice/modify/${notice.id}` }">
                     수정하기
                   </v-btn>
 
-                  <v-btn color="error ma-10" @click="noticeStore.delete(notice.id)">
+                  <v-btn color="error ml-10" @click="noticeStore.delete(notice.id)">
                     삭제하기
                   </v-btn>
                 </v-list-item>

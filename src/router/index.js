@@ -21,22 +21,10 @@ const routes = [
   },
 
   {
-    path: '/notice/modify',
-    name: 'noticeModifyList',
-    component: () => import(/* webpackChunkName: "noticeModifyList" */ '../views/NoticeModifyListView.vue')
-  },
-
-  {
     path: '/notice/modify/:noticeNumber',
     name: 'noticeModify',
     component: () => import(/* webpackChunkName: "noticeModify" */ '../views/NoticeModifyView.vue'),
     props: true
-  },
-
-  {
-    path: '/notice/delete',
-    name: 'noticeDelete',
-    component: () => import(/* webpackChunkName: "noticeDelete" */ '../views/NoticeDeleteView.vue')
   },
 
   {
@@ -45,7 +33,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "noticeConfirmList" */ '../views/NoticeConfirmListView.vue')
   },
 
-  
+
   {
     path: '/notice/confirm/:noticeNumber',
     name: 'noticeConfirm',
