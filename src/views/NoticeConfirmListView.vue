@@ -35,8 +35,18 @@
                   {{ notice.noticeType }}
                 </v-chip>
               </td>
-              <td><v-list-item :to="{ path: `/notice/confirm/${notice.id}` }"> {{ notice.title
-                }}</v-list-item>
+              <td>
+                <v-list-item :to="{ path: `/notice/confirm/${notice.id}` }">
+                  {{ notice.title }}
+
+                  <v-btn :to="{ path: `/notice/modify/${notice.id}` }">
+                    수정하기
+                  </v-btn>
+
+                  <v-btn @click="noticeStore.delete(notice.id)">
+                    삭제하기
+                  </v-btn>
+                </v-list-item>
               </td>
               <td>{{ noticeStore.formatDate(notice.createdDate) }}</td>
             </tr>

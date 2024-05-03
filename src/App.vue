@@ -18,10 +18,10 @@
 
         <v-list-group value="문의">
           <template v-slot:activator="{ props }">
-            <v-list-item v-bind="props" title="문의"></v-list-item>
+            <v-list-item v-bind="props" title="게시판"></v-list-item>
           </template>
 
-          <v-list-item v-for="item in contact" :key="item.title" :value="item.title" :title="item.title" :to="item.to"></v-list-item>
+          <v-list-item v-for="item in community" :key="item.title" :value="item.title" :title="item.title" :to="item.to"></v-list-item>
         </v-list-group>
 
       </v-list>
@@ -69,16 +69,17 @@ export default {
       sidebar: false,
       display,
       notice: [
-        {title: "등록", to: "/notice/create"},
-        {title: "수정", to: "/notice/modify"},
-        {title: "삭제", to: "/notice/delete"},
-        {title: "확인", to: "/notice/confirm"},
+        {title: "목록", to: "/notice/confirm"},
+        {title: "등록하기", to: "/notice/create"},
+        // {title: "수정", to: "/notice/modify"},
+        // {title: "삭제", to: "/notice/delete"},
+
       ],
 
-      contact: [
+      community: [
         {title: "목록", to: "/contact/all"},
-        {title: "미완료", to: "/contact/incomplete"},
-        {title: "완료", to: "/contact/complete"},
+        // {title: "미완료", to: "/contact/incomplete"},
+        // {title: "완료", to: "/contact/complete"},
       ],
 
       open: [],
@@ -88,12 +89,12 @@ export default {
 
   methods: {
     getTimer(){
-        const hour = Math.floor(this.authStore.tokenExpirationMinute / 60) >= 10 ? 
-        Math.floor(this.authStore.tokenExpirationMinute / 60) 
+        const hour = Math.floor(this.authStore.tokenExpirationMinute / 60) >= 10 ?
+        Math.floor(this.authStore.tokenExpirationMinute / 60)
         : "0" + Math.floor(this.authStore.tokenExpirationMinute / 60)
-        const minutes = Math.floor(this.authStore.tokenExpirationMinute % 60 / 10).toString() 
+        const minutes = Math.floor(this.authStore.tokenExpirationMinute % 60 / 10).toString()
         + Math.floor(this.authStore.tokenExpirationMinute % 60 % 10).toString()
-       
+
         return `${hour}:${minutes}`
     }
   }
