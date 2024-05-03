@@ -12,16 +12,16 @@
             <v-list-item v-bind="props" title="공지사항"></v-list-item>
           </template>
 
-          <v-list-item v-for="item in notice" :key="item.title" :value="item.title" :title="item.title" :to="item.to"></v-list-item>
+          <v-list-item v-for="item in notice" :key="item.to" :value="item.title" :title="item.title" :to="item.to"></v-list-item>
         </v-list-group>
 
 
-        <v-list-group value="문의">
+        <v-list-group value="게시판">
           <template v-slot:activator="{ props }">
             <v-list-item v-bind="props" title="게시판"></v-list-item>
           </template>
 
-          <v-list-item v-for="item in community" :key="item.title" :value="item.title" :title="item.title" :to="item.to"></v-list-item>
+          <v-list-item v-for="item in community" :key="item.to" :value="item.title" :title="item.title" :to="item.to"></v-list-item>
         </v-list-group>
 
       </v-list>
