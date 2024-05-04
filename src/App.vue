@@ -1,19 +1,13 @@
 <template>
   <v-layout>
-    <v-navigation-drawer class="bg-deep-purple" theme="dark" permanent v-if="display.mdAndUp && authStore.token !== ''">
+    <v-navigation-drawer class="bg-deep-purple" theme="dark" permanent v-if="authStore.token !== ''">
 
 
-      <v-list>
+      <v-list density="compact">
         <v-list-subheader>MAPSHOT-ADMIN</v-list-subheader>
-        <v-list-item title="홈" to="/home"></v-list-item>
-
-        <v-list-subheader>공지사항</v-list-subheader>
-        <v-list-item v-for="(item, index) in notice" :key="index" :value="item.title" :title="item.title" :to="item.to"></v-list-item>
-
-        <v-list-subheader>게시판</v-list-subheader>
-        <v-list-item v-for="(item, index) in community" :key="index" :value="item.title" :title="item.title" :to="item.to"></v-list-item>
-
+        <v-list-item v-for="(item, index) in menu" :key="index" :value="item.title" :title="item.title" :to="item.to"></v-list-item>
       </v-list>
+
       <template v-slot:append>
         <div class="pa-2">
           <v-btn block @click="authStore.refreshAuth()">
@@ -35,7 +29,6 @@
 
 <script>
 
-import { useDisplay } from 'vuetify'
 import { ref } from 'vue'
 import { useAuthStore } from '@/store/auth.js'
 
@@ -51,21 +44,16 @@ export default {
   },
 
   data() {
-    const display = ref(useDisplay())
 
     return {
-      appTitle: "MAPSHOT ADMIN",
-      sidebar: false,
-      display,
-      notice: [
-        {title: "목록", to: "/notice/confirm"},
-        {title: "등록하기", to: "/notice/create"},
+      menu: [
+        {title: "홈", to: "/home"},
+        {title: "공지사항 목록", to: "/notice/confirm"},
+        {title: "공지사항 등록", to: "/notice/create"},
+        {title: "커뮤니티", to: "/contact/all"},
 
       ],
 
-      community: [
-        {title: "목록", to: "/contact/all"},
-      ],
     };
   },
 
