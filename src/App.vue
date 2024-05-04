@@ -3,26 +3,15 @@
     <v-navigation-drawer class="bg-deep-purple" theme="dark" permanent v-if="display.mdAndUp && authStore.token !== ''">
 
 
-      <v-list v-model:opened="open">
+      <v-list>
         <v-list-subheader>MAPSHOT-ADMIN</v-list-subheader>
         <v-list-item title="홈" to="/home"></v-list-item>
 
-        <v-list-group value="공지사항">
-          <template v-slot:activator="{ props }">
-            <v-list-item v-bind="props" title="공지사항"></v-list-item>
-          </template>
+        <v-list-subheader>공지사항</v-list-subheader>
+        <v-list-item v-for="(item, index) in notice" :key="index" :value="item.title" :title="item.title" :to="item.to"></v-list-item>
 
-          <v-list-item v-for="item in notice" :key="item.to" :value="item.title" :title="item.title" :to="item.to"></v-list-item>
-        </v-list-group>
-
-
-        <v-list-group value="게시판">
-          <template v-slot:activator="{ props }">
-            <v-list-item v-bind="props" title="게시판"></v-list-item>
-          </template>
-
-          <v-list-item v-for="item in community" :key="item.to" :value="item.title" :title="item.title" :to="item.to"></v-list-item>
-        </v-list-group>
+        <v-list-subheader>게시판</v-list-subheader>
+        <v-list-item v-for="(item, index) in community" :key="index" :value="item.title" :title="item.title" :to="item.to"></v-list-item>
 
       </v-list>
       <template v-slot:append>
@@ -71,18 +60,12 @@ export default {
       notice: [
         {title: "목록", to: "/notice/confirm"},
         {title: "등록하기", to: "/notice/create"},
-        // {title: "수정", to: "/notice/modify"},
-        // {title: "삭제", to: "/notice/delete"},
 
       ],
 
       community: [
         {title: "목록", to: "/contact/all"},
-        // {title: "미완료", to: "/contact/incomplete"},
-        // {title: "완료", to: "/contact/complete"},
       ],
-
-      open: [],
     };
   },
 
