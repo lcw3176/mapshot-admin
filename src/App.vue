@@ -49,7 +49,7 @@ export default {
         {title: "홈", to: "/home"},
         {title: "공지사항 목록", to: "/notice/confirm"},
         {title: "공지사항 등록", to: "/notice/create"},
-        {title: "커뮤니티", to: "/contact/all"},
+        {title: "게시글 목록", to: "/community"},
 
       ],
 
