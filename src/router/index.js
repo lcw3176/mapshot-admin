@@ -41,6 +41,12 @@ const routes = [
     props: true
   },
 
+  {
+    path: '/news-letter',
+    name: 'newsLetter',
+    component: () => import(/* webpackChunkName: "newsLetter" */ '../views/NewsLetterView.vue')
+  },
+
 ]
 
 const router = createRouter({

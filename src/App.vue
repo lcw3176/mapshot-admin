@@ -50,6 +50,7 @@ export default {
         {title: "공지사항 목록", to: "/notice/confirm"},
         {title: "공지사항 등록", to: "/notice/create"},
         {title: "게시글 목록", to: "/community"},
+        {title: "뉴스레터", to: "/news-letter"},
 
       ],
 
