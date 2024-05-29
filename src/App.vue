@@ -3,11 +3,22 @@
     <v-navigation-drawer class="bg-deep-purple" theme="dark" permanent v-if="authStore.token !== ''">
 
 
-      <v-list density="compact">
-        <v-list-subheader>MAPSHOT-ADMIN</v-list-subheader>
-        <v-list-item v-for="(item, index) in menu" :key="index" :value="item.title" :title="item.title" :to="item.to"></v-list-item>
-      </v-list>
+      <v-list>
 
+        <v-list-subheader>MAPSHOT-ADMIN</v-list-subheader>
+        <v-divider></v-divider>
+        <v-list-item v-for="(item, index) in home" :key="index" :value="item.title" :title="item.title" :to="item.to"></v-list-item>
+        <v-divider></v-divider>
+        <v-list-subheader>공지사항</v-list-subheader>
+        <v-list-item v-for="(item, index) in notice" :key="index" :value="item.title" :title="item.title" :to="item.to"></v-list-item>
+        <v-divider></v-divider>
+        <v-list-subheader>커뮤니티</v-list-subheader>
+        <v-list-item v-for="(item, index) in community" :key="index" :value="item.title" :title="item.title" :to="item.to"></v-list-item>
+        <v-divider></v-divider>
+        <v-list-subheader>뉴스레터</v-list-subheader>
+        <v-list-item v-for="(item, index) in news_letter" :key="index" :value="item.title" :title="item.title" :to="item.to"></v-list-item>
+
+      </v-list>
       <template v-slot:append>
         <div class="pa-2">
           <v-btn block @click="authStore.refreshAuth()">
@@ -45,14 +56,22 @@ export default {
   data() {
 
     return {
-      menu: [
+      home: [
         {title: "홈", to: "/home"},
-        {title: "공지사항 목록", to: "/notice/confirm"},
-        {title: "공지사항 등록", to: "/notice/create"},
-        {title: "게시글 목록", to: "/community"},
-        {title: "뉴스레터", to: "/news-letter"},
-
       ],
+
+      notice: [
+        {title: "목록", to: "/notice/confirm"},
+        {title: "등록", to: "/notice/create"},
+      ],
+
+      community: [
+        {title: "목록", to: "/community"},
+      ],
+
+      news_letter: [
+        {title: "강제 갱신", to: "/news-letter"},
+      ]
 
     };
   },
