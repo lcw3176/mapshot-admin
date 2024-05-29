@@ -7,16 +7,16 @@
 
         <v-list-subheader>MAPSHOT-ADMIN</v-list-subheader>
         <v-divider></v-divider>
-        <v-list-item v-for="(item, index) in home" :key="index" :value="item.title" :title="item.title" :to="item.to"></v-list-item>
+        <v-list-item v-for="(item, index) in home" :key="'home' + index" :title="item.title" :to="item.to"></v-list-item>
         <v-divider></v-divider>
         <v-list-subheader>공지사항</v-list-subheader>
-        <v-list-item v-for="(item, index) in notice" :key="index" :value="item.title" :title="item.title" :to="item.to"></v-list-item>
+        <v-list-item v-for="(item, index) in notice" :key="'notice' + index" :title="item.title" :to="item.to"></v-list-item>
         <v-divider></v-divider>
         <v-list-subheader>커뮤니티</v-list-subheader>
-        <v-list-item v-for="(item, index) in community" :key="index" :value="item.title" :title="item.title" :to="item.to"></v-list-item>
+        <v-list-item v-for="(item, index) in community" :key="'community' + index" :title="item.title" :to="item.to"></v-list-item>
         <v-divider></v-divider>
         <v-list-subheader>뉴스레터</v-list-subheader>
-        <v-list-item v-for="(item, index) in news_letter" :key="index" :value="item.title" :title="item.title" :to="item.to"></v-list-item>
+        <v-list-item v-for="(item, index) in news_letter" :key="'news_letter' + index" :title="item.title" :to="item.to"></v-list-item>
 
       </v-list>
       <template v-slot:append>
