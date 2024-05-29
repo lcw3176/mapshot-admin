@@ -17,7 +17,7 @@ const routes = [
   {
     path: '/notice/create',
     name: 'noticeCreate',
-    component: () => import(/* webpackChunkName: "noticeCreate" */ '../views/NoticeCreateView.vue')
+    component: () => import(/* webpackChunkName: "noticeCreate" */ '../views/NoticeView.vue')
   },
 
   {
@@ -28,16 +28,16 @@ const routes = [
   },
 
   {
-    path: '/notice/confirm',
-    name: 'noticeConfirmList',
-    component: () => import(/* webpackChunkName: "noticeConfirmList" */ '../views/NoticeConfirmListView.vue')
+    path: '/notice/list',
+    name: 'noticeList',
+    component: () => import(/* webpackChunkName: "noticeList" */ '../views/NoticeListView.vue')
   },
 
 
   {
-    path: '/notice/confirm/:noticeNumber',
-    name: 'noticeConfirm',
-    component: () => import(/* webpackChunkName: "noticeConfirm" */ '../views/NoticeConfirmView.vue'),
+    path: '/notice/:noticeNumber',
+    name: 'noticeDetail',
+    component: () => import(/* webpackChunkName: "noticeDetail" */ '../views/NoticeView.vue'),
     props: true
   },
 

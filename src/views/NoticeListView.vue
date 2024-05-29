@@ -44,7 +44,7 @@
                 </v-chip>
               </td>
               <td>
-                <v-list-item :to="{ path: `/notice/confirm/${notice.id}` }">
+                <v-list-item :to="{ path: `/notice/${notice.id}` }">
                   {{ notice.title }}
                 </v-list-item>
               </td>
@@ -65,7 +65,7 @@
             </tbody>
           </v-table>
 
-          <v-pagination v-model="noticeStore.nowPage" @click="noticeStore.loadPostList(noticeStore.nowPage)"  :length="noticeStore.totalPage"></v-pagination>
+          <v-pagination v-model="noticeStore.nowPage" @click="noticeStore.loadPostList(noticeStore.nowPage)" :length="noticeStore.totalPage"></v-pagination>
 
         </v-col>
 

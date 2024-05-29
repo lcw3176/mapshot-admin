@@ -61,7 +61,7 @@ export default {
       ],
 
       notice: [
-        {title: "목록", to: "/notice/confirm"},
+        {title: "목록", to: "/notice/list"},
         {title: "등록", to: "/notice/create"},
       ],
 
