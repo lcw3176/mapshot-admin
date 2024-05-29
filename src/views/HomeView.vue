@@ -39,13 +39,6 @@ export default {
 
     },
 
-
-    methods: {
-        login() {
-            this.authStore.login();
-        },
-    }
-
 }
 </script>
 
