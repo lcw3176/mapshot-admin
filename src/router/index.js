@@ -17,7 +17,7 @@ const routes = [
   {
     path: '/notice/create',
     name: 'noticeCreate',
-    component: () => import(/* webpackChunkName: "noticeCreate" */ '../views/NoticeView.vue')
+    component: () => import(/* webpackChunkName: "noticeCreate" */ '../views/NoticeCreateView.vue')
   },
 
   {

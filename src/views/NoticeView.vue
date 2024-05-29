@@ -2,19 +2,22 @@
     <v-container is-fluid>
         <v-sheet width="1000" class="mx-auto mt-10">
 
-            <v-form ref="form">
-                <v-text-field v-model="noticeStore.notice.title" variant="underlined" label="제목" required></v-text-field>
+            <div>
+                <v-chip :color=noticeStore.getNoticeTypeClass(noticeStore.notice.noticeType) variant="outlined">
+                    {{ noticeStore.notice.noticeType }}
+                </v-chip>
+                <h2 class="text-h5 font-weight-black mt-2">{{ noticeStore.notice.title }}</h2>
 
-                <v-select v-model="noticeStore.notice.noticeType" :items="items" variant="underlined" label="카테고리" required></v-select>
+                <div class="text-h font-weight-medium mt-2"> {{
+                    noticeStore.formatDate(noticeStore.notice.createdDate) }}
+                </div>
 
-                <QuillEditor v-model:content="noticeStore.notice.content" theme="snow" contentType="html" style="height: 500px;" />
 
-                <v-btn class="me-4 mt-5" color="success" @click="noticeStore.register()">
-                    등록하기
-                </v-btn>
-            </v-form>
+                <QuillEditor v-model:content="noticeStore.notice.content" theme="bubble" readOnly="true" contentType="html"/>
+            </div>
         </v-sheet>
     </v-container>
+
 </template>
 
 
@@ -23,7 +26,7 @@
 import { useNoticeStore } from '@/store/notice.js'
 
 import { QuillEditor } from '@vueup/vue-quill'
-import '@vueup/vue-quill/dist/vue-quill.snow.css';
+import '@vueup/vue-quill/dist/vue-quill.bubble.css';
 
 export default {
 
@@ -33,11 +36,6 @@ export default {
 
     setup() {
         const noticeStore = useNoticeStore();
-        noticeStore.notice = {
-            title: '',
-            content: '',
-            noticeType: '',
-        };
 
         return {
             noticeStore,
@@ -45,7 +43,14 @@ export default {
 
     },
 
+    created() {
+        this.noticeStore.loadPost(this.noticeNumber);
+    },
+
+
     data: () => ({
+        notices: [],
+        loadNum: 0,
         items: [
             '오류수정',
             '점검예정',
@@ -56,6 +61,10 @@ export default {
 
     methods: {
 
+    },
+
+    props: {
+        noticeNumber: Number
     }
 
 }
