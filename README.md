@@ -10,11 +10,6 @@
 ## 서비스 소개
 맵샷 관리자 페이지 입니다
 
-## 구현 기능
-- 관리자 로그인, 로그인 연장
-- 공지사항 관리
-- 유저 문의 관리(개발 예정)
-
 ## 기술 스택
 ### FrontEnd
 - Vue 3
@@ -29,15 +24,11 @@
 ![로그인](https://github.com/lcw3176/mapshot-admin/assets/59993347/0dae66c7-dd8e-4fdb-802e-b5ed4b5091a4)
 
 ### 홈
-![홈](https://github.com/lcw3176/mapshot-admin/assets/59993347/b9028653-c099-4746-a815-f9d330bc6ea2)
-
+![제목 없음](https://github.com/lcw3176/mapshot-admin/assets/59993347/1160d605-ba29-4035-bd8a-ff27d1f05744)
 
 ### 공지사항
+#### 수정 및 삭제
+![asdasd](https://github.com/lcw3176/mapshot-admin/assets/59993347/6bf34bb4-9484-465d-a635-d0fdd8a4bdbc)
+
 #### 등록
-![등록](https://github.com/lcw3176/mapshot-admin/assets/59993347/0e71ab58-f3ee-4416-b478-1553e8d522e4)
-
-#### 수정
-![수정](https://github.com/lcw3176/mapshot-admin/assets/59993347/7c0386cb-0993-41a1-bde1-a89db6920836)
-
-#### 삭제
-![삭제](https://github.com/lcw3176/mapshot-admin/assets/59993347/89cc2537-74ba-4a1c-8ab0-d88a98aa22fa)
+![afas](https://github.com/lcw3176/mapshot-admin/assets/59993347/c38e25e2-24ff-4c19-923f-acbcfb470da7)
