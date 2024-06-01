@@ -48,15 +48,15 @@ const routes = [
   },
 
   {
-    path: '/community',
-    name: 'community',
-    component: () => import(/* webpackChunkName: "community" */ '../views/PostListView.vue')
+    path: '/post',
+    name: 'postList',
+    component: () => import(/* webpackChunkName: "postList" */ '../views/PostListView.vue')
   },
 
   {
     path: '/post/:postId',
     name: 'postDetail',
-    component: () => import(/* webpackChunkName: "noticeDetail" */ '../views/NoticeView.vue'),
+    component: () => import(/* webpackChunkName: "postDetail" */ '../views/NoticeView.vue'),
     props: true
   },
 

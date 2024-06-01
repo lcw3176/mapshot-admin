@@ -66,7 +66,7 @@ export default {
       ],
 
       community: [
-        {title: "목록", to: "/community"},
+        {title: "목록", to: "/post"},
       ],
 
       news_letter: [
