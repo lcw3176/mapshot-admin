@@ -47,6 +47,19 @@ const routes = [
     component: () => import(/* webpackChunkName: "newsLetter" */ '../views/NewsLetterView.vue')
   },
 
+  {
+    path: '/community',
+    name: 'community',
+    component: () => import(/* webpackChunkName: "community" */ '../views/PostListView.vue')
+  },
+
+  {
+    path: '/post/:postId',
+    name: 'postDetail',
+    component: () => import(/* webpackChunkName: "noticeDetail" */ '../views/NoticeView.vue'),
+    props: true
+  },
+
 ]
 
 const router = createRouter({
