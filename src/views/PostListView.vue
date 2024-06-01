@@ -40,7 +40,7 @@
                 </v-chip>
               </td>
               <td>
-                <v-list-item :to="{ path: `/post/${notice.id}` }">
+                <v-list-item :to="{ path: `/post/${post.id}` }">
                   {{ post.title }}
                 </v-list-item>
               </td>
