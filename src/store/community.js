@@ -57,7 +57,7 @@ export const useCommunityStore = defineStore("community", {
         post: '',
         posts: [],
         totalPage: '',
-        nowPage: ''
+        nowPage: 1
     }),
 
     getters: {

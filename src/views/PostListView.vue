@@ -79,7 +79,7 @@ export default {
     setup() {
         const communityStore = useCommunityStore();
 
-        communityStore.loadPostList(1);
+        communityStore.loadPostList(communityStore.nowPage);
 
         return {
             communityStore,
