@@ -4,10 +4,12 @@ import { useAuthStore } from "./auth";
 import dayjs from 'dayjs';
 
 let token = useAuthStore().token;
+const apiUrl = process.env.VUE_APP_API_URL;
+
 
 async function requestList(pageNumber) {
     try {
-        const response = await axios.get('https://api.kmapshot.com/notice?page=' + pageNumber);
+        const response = await axios.get(apiUrl + '/notice?page=' + pageNumber);
 
         return response.data;
 
@@ -21,7 +23,7 @@ async function requestList(pageNumber) {
 
 async function requestDetail(noticeNumber) {
     try {
-        const response = await axios.get('https://api.kmapshot.com/notice/' + noticeNumber);
+        const response = await axios.get(apiUrl + '/notice/' + noticeNumber);
 
         return response.data;
 
@@ -35,7 +37,7 @@ async function requestDetail(noticeNumber) {
 
 async function requestRegister(notice) {
     try {
-        await axios.post('https://api.kmapshot.com/admin/notice/register', {
+        await axios.post(apiUrl + '/admin/notice/register', {
             title: notice.title,
             content: notice.content,
             noticeType: notice.noticeType
@@ -57,7 +59,7 @@ async function requestRegister(notice) {
 
 async function requestModify(notice) {
     try {
-        await axios.post('https://api.kmapshot.com/admin/notice/modify/' + notice.id, {
+        await axios.post(apiUrl + '/admin/notice/modify/' + notice.id, {
             title: notice.title,
             content: notice.content,
             noticeType: notice.noticeType
@@ -78,7 +80,7 @@ async function requestModify(notice) {
 
 async function requestDelete(noticeNumber) {
     try {
-        await axios.get('https://api.kmapshot.com/admin/notice/delete/' + noticeNumber, {
+        await axios.get(apiUrl + '/admin/notice/delete/' + noticeNumber, {
             headers: {
                 admin_auth_token: token
             }
