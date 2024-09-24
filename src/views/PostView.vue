@@ -12,7 +12,7 @@
             communityStore.formatDate(communityStore.post.createdDate) }}
         </div>
 
-        <QuillEditor v-model:content="communityStore.post.content" theme="bubble" readOnly="true" contentType="html"/>
+        <QuillEditor v-model:content="communityStore.post.content" theme="bubble" readOnly="true"/>
       </div>
     </v-sheet>
   </v-container>

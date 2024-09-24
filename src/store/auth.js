@@ -1,18 +1,18 @@
-import { defineStore } from "pinia";
+import {defineStore} from "pinia";
 import axios from 'axios';
 import router from "@/router";
 
+const apiUrl = process.env.VUE_APP_API_URL;
+
 async function requestLogin(nickname, password) {
   try {
-    const response = await axios.post('https://api.kmapshot.com/admin/user/login', {
+    return await axios.post(apiUrl + '/admin/user/login', {
       nickname: nickname,
       password: password
     });
 
-    return response;
-
   } catch (error) {
-
+    console.log(error);
     return '';
   }
 
@@ -20,16 +20,14 @@ async function requestLogin(nickname, password) {
 
 async function requestRefresh(token) {
   try {
-    const response = await axios.post('https://api.kmapshot.com/admin/user/auth/refresh', {}, {
+    return await axios.post(apiUrl + '/admin/user/auth/refresh', {}, {
       headers: {
         admin_auth_token: token
       }
     });
 
-    return response;
-
   } catch (error) {
-
+    console.log(error);
     return '';
   }
 

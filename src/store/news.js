@@ -3,12 +3,13 @@ import axios from 'axios';
 import { useAuthStore } from "./auth";
 
 let token = useAuthStore().token;
+const apiUrl = process.env.VUE_APP_API_URL;
 
 
 
 async function requestUpdateNewsLetter() {
     try {
-        await axios.get('https://api.kmapshot.com/admin/news/update', {
+        await axios.get(apiUrl + '/admin/news/update', {
             headers: {
                 admin_auth_token: token
             }

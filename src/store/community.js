@@ -4,10 +4,11 @@ import { useAuthStore } from "./auth";
 import dayjs from 'dayjs';
 
 let token = useAuthStore().token;
+const apiUrl = process.env.VUE_APP_API_URL;
 
 async function requestList(pageNumber) {
     try {
-        const response = await axios.get('https://api.kmapshot.com/post?page=' + pageNumber);
+        const response = await axios.get(apiUrl + '/post?page=' + pageNumber);
 
         return response.data;
 
@@ -21,7 +22,7 @@ async function requestList(pageNumber) {
 
 async function requestDetail(postId) {
     try {
-        const response = await axios.get('https://api.kmapshot.com/post/' + postId);
+        const response = await axios.get(apiUrl + '/post/' + postId);
 
         return response.data;
 
@@ -35,7 +36,7 @@ async function requestDetail(postId) {
 
 async function requestDelete(postId) {
     try {
-        await axios.get('https://api.kmapshot.com/admin/post/delete/' + postId, {
+        await axios.get(apiUrl + '/admin/post/delete/' + postId, {
             headers: {
                 admin_auth_token: token
             }
