@@ -9,7 +9,7 @@ const apiUrl = process.env.VUE_APP_API_URL;
 
 async function requestList(pageNumber) {
     try {
-        const response = await axios.get(apiUrl + '/notice?page=' + pageNumber);
+        const response = await axios.get(apiUrl + '/notice?page=' + pageNumber, { withCredentials:true });
 
         return response.data;
 
@@ -23,7 +23,7 @@ async function requestList(pageNumber) {
 
 async function requestDetail(noticeNumber) {
     try {
-        const response = await axios.get(apiUrl + '/notice/' + noticeNumber);
+        const response = await axios.get(apiUrl + '/notice/' + noticeNumber, { withCredentials:true });
 
         return response.data;
 
@@ -44,7 +44,8 @@ async function requestRegister(notice) {
         }, {
             headers: {
                 admin_auth_token: token
-            }
+            },
+            withCredentials: true
         });
         return true;
 
@@ -66,7 +67,8 @@ async function requestModify(notice) {
         }, {
             headers: {
                 admin_auth_token: token
-            }
+            },
+            withCredentials: true
         });
         return true
 
@@ -83,7 +85,8 @@ async function requestDelete(noticeNumber) {
         await axios.get(apiUrl + '/admin/notice/delete/' + noticeNumber, {
             headers: {
                 admin_auth_token: token
-            }
+            },
+            withCredentials: true
         });
         return true;
 
