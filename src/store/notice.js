@@ -9,7 +9,7 @@ const apiUrl = process.env.VUE_APP_API_URL;
 
 async function requestList(pageNumber) {
     try {
-        const response = await axios.get(apiUrl + '/notice?page=' + pageNumber, { withCredentials:true });
+        const response = await axios.get(apiUrl + '/notice?page=' + pageNumber);
 
         return response.data;
 
@@ -23,7 +23,7 @@ async function requestList(pageNumber) {
 
 async function requestDetail(noticeNumber) {
     try {
-        const response = await axios.get(apiUrl + '/notice/' + noticeNumber, { withCredentials:true });
+        const response = await axios.get(apiUrl + '/notice/' + noticeNumber);
 
         return response.data;
 
