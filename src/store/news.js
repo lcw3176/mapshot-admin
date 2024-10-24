@@ -12,7 +12,8 @@ async function requestUpdateNewsLetter() {
         await axios.get(apiUrl + '/admin/news/update', {
             headers: {
                 admin_auth_token: token
-            }
+            },
+            withCredentials:true 
         });
         return true;
 
