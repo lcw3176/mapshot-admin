@@ -8,7 +8,7 @@ const apiUrl = process.env.VUE_APP_API_URL;
 
 async function requestList(pageNumber) {
     try {
-        const response = await axios.get(apiUrl + '/post?page=' + pageNumber);
+        const response = await axios.get(apiUrl + '/post?page=' + pageNumber, { withCredentials:true });
 
         return response.data;
 
@@ -22,7 +22,7 @@ async function requestList(pageNumber) {
 
 async function requestDetail(postId) {
     try {
-        const response = await axios.get(apiUrl + '/post/' + postId);
+        const response = await axios.get(apiUrl + '/post/' + postId, { withCredentials:true });
 
         return response.data;
 
@@ -39,7 +39,8 @@ async function requestDelete(postId) {
         await axios.get(apiUrl + '/admin/post/delete/' + postId, {
             headers: {
                 admin_auth_token: token
-            }
+            },
+            withCredentials: true
         });
         return true;
 
