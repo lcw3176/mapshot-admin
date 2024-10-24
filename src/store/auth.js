@@ -9,7 +9,7 @@ async function requestLogin(nickname, password) {
     return await axios.post(apiUrl + '/admin/user/login', {
       nickname: nickname,
       password: password
-    });
+    }, { withCredentials:true });
 
   } catch (error) {
     console.log(error);
@@ -24,7 +24,7 @@ async function requestRefresh(token) {
       headers: {
         admin_auth_token: token
       }
-    });
+    }, { withCredentials:true });
 
   } catch (error) {
     console.log(error);
