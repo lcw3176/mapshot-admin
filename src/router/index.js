@@ -68,13 +68,4 @@ const router = createRouter({
 })
 
 
-router.beforeEach((to, from, next) => {
-
-  if (to.path !== "/login" && useAuthStore().token === '') {
-      next("/login");
-  } else {
-      next();
-  }
-});
-
 export default router
