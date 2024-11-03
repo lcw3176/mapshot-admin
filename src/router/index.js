@@ -1,11 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { useAuthStore } from '@/store/auth';
 
 const routes = [
   {
     path: '/login',
     name: 'login',
     component: () => import(/* webpackChunkName: "login" */ '../views/LoginView.vue')
+  },
+
+  {
+    path: '/',
+    redirect: '/login'
   },
 
   {
