@@ -1,9 +1,7 @@
 import { defineStore } from "pinia";
 import axios from 'axios';
-import { useAuthStore } from "./auth";
 import dayjs from 'dayjs';
 
-let token = useAuthStore().token;
 const apiUrl = process.env.VUE_APP_API_URL;
 
 
@@ -42,9 +40,6 @@ async function requestRegister(notice) {
             content: notice.content,
             noticeType: notice.noticeType
         }, {
-            headers: {
-                admin_auth_token: token
-            },
             withCredentials: true
         });
         return true;
@@ -65,9 +60,6 @@ async function requestModify(notice) {
             content: notice.content,
             noticeType: notice.noticeType
         }, {
-            headers: {
-                admin_auth_token: token
-            },
             withCredentials: true
         });
         return true
@@ -83,9 +75,6 @@ async function requestModify(notice) {
 async function requestDelete(noticeNumber) {
     try {
         await axios.get(apiUrl + '/admin/notice/delete/' + noticeNumber, {
-            headers: {
-                admin_auth_token: token
-            },
             withCredentials: true
         });
         return true;
@@ -165,7 +154,7 @@ export const useNoticeStore = defineStore("notice", {
 
                 if (result) {
                     alert("삭제 성공");
-                    this.init();
+                    await this.init();
                 } else {
                     alert("삭제 실패");
                 }
