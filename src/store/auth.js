@@ -65,7 +65,7 @@ export const useAuthStore = defineStore("auth", {
 
     async login() {
       let data = await requestLogin(this.nickname, this.password);
-
+      console.log(data);
       if (data.status === 200) {
         this.token = Cookies.get('ADMIN_AUTH_TOKEN');
         await router.push('/home');

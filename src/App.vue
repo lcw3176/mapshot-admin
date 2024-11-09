@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <v-navigation-drawer class="bg-deep-purple" theme="dark" permanent>
+    <v-navigation-drawer class="bg-deep-purple" theme="dark" permanent v-if="authStore.token !== undefined">
 
 
       <v-list>
