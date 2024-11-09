@@ -1,9 +1,7 @@
 import { defineStore } from "pinia";
 import axios from 'axios';
-import { useAuthStore } from "./auth";
 import dayjs from 'dayjs';
 
-let token = useAuthStore().token;
 const apiUrl = process.env.VUE_APP_API_URL;
 
 async function requestList(pageNumber) {
@@ -37,9 +35,6 @@ async function requestDetail(postId) {
 async function requestDelete(postId) {
     try {
         await axios.get(apiUrl + '/admin/post/delete/' + postId, {
-            headers: {
-                admin_auth_token: token
-            },
             withCredentials: true
         });
         return true;
