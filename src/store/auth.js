@@ -38,7 +38,7 @@ export const useAuthStore = defineStore("auth", {
   state: () => ({
     nickname: '',
     password: '',
-    token: '',
+    token: Cookies.get('ADMIN_AUTH_TOKEN'),
     expirationTimer : '',
     tokenExpirationMinute: 0,
 
