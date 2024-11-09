@@ -68,9 +68,9 @@ export const useAuthStore = defineStore("auth", {
 
       if (data.status === 200) {
         this.token = Cookies.get('ADMIN_AUTH_TOKEN');
-        await router.push('/home');
+        router.push('/home');
         this.tokenExpirationMinute = 60;
-        await this.startTimer();
+        this.startTimer();
       }
 
     },
