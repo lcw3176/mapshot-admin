@@ -76,8 +76,10 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
 
-  if (isEmpty(useAuthStore().token)) {
+  if (to.path !== "/login" && isEmpty(useAuthStore().token)) {
       next("/login");
+  } else if(to.path === "/login" && !isEmpty(useAuthStore().token)) {
+      next("/home");
   } else {
       next();
   }
