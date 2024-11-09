@@ -1,8 +1,6 @@
 import { defineStore } from "pinia";
 import axios from 'axios';
-import { useAuthStore } from "./auth";
 
-let token = useAuthStore().token;
 const apiUrl = process.env.VUE_APP_API_URL;
 
 
@@ -10,10 +8,7 @@ const apiUrl = process.env.VUE_APP_API_URL;
 async function requestUpdateNewsLetter() {
     try {
         await axios.get(apiUrl + '/admin/news/update', {
-            headers: {
-                admin_auth_token: token
-            },
-            withCredentials:true 
+            withCredentials:true
         });
         return true;
 
