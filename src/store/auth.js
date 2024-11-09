@@ -1,6 +1,8 @@
 import {defineStore} from "pinia";
 import axios from 'axios';
 import router from "@/router";
+import Cookies from 'js-cookie';
+
 
 const apiUrl = process.env.VUE_APP_API_URL;
 
@@ -18,13 +20,9 @@ async function requestLogin(nickname, password) {
 
 }
 
-async function requestRefresh(token) {
+async function requestRefresh() {
   try {
-    return await axios.post(apiUrl + '/admin/user/auth/refresh', {}, {
-      headers: {
-        admin_auth_token: token
-      }
-    }, { withCredentials:true });
+    return await axios.post(apiUrl + '/admin/user/auth/refresh', {}, { withCredentials:true });
 
   } catch (error) {
     console.log(error);
@@ -68,11 +66,11 @@ export const useAuthStore = defineStore("auth", {
     async login() {
       let data = await requestLogin(this.nickname, this.password);
 
-      if (data.headers.admin_auth_token !== '' && data.headers.admin_auth_token !== undefined) {
-        this.token = data.headers.admin_auth_token;
-        router.push('/home');
+      if (data.status === 200) {
+        this.token = Cookies.get('ADMIN_AUTH_TOKEN');
+        await router.push('/home');
         this.tokenExpirationMinute = 60;
-        this.startTimer();
+        await this.startTimer();
       }
 
     },
@@ -81,8 +79,8 @@ export const useAuthStore = defineStore("auth", {
     async refreshAuth() {
       let data = await requestRefresh(this.token);
 
-      if (data.headers.admin_auth_token !== '' && data.headers.admin_auth_token !== undefined) {
-        this.token = data.headers.admin_auth_token;
+      if (data.status === 200) {
+        this.token = Cookies.get('ADMIN_AUTH_TOKEN');
         this.tokenExpirationMinute = 60;
       }
 
