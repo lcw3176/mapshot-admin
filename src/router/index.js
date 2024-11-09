@@ -76,11 +76,20 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
 
-  if (to.path !== "/login" && useAuthStore().token === '') {
+  if (to.path !== "/login" && !isEmpty(useAuthStore().token)) {
       next("/login");
   } else {
       next();
   }
 });
+
+function isEmpty(input) {
+  return typeof input === "undefined" ||
+      input === null ||
+      input === "" ||
+      input === "null" ||
+      input.length === 0 ||
+      (typeof input === "object" && !Object.keys(input).length);
+}
 
 export default router
